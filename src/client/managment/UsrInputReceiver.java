@@ -23,14 +23,9 @@ public class UsrInputReceiver {
         sc=scanner;
     }
 
-    /**
-     * Скрипт для ввода и валидации значений полей новых элементов основной коллекции
-     * @param type - режим ввода
-     * @param ID - id, используется в команде update
-     * @return elem - новый элемент коллекции
-     */
 
-    public static LabWork setElemScript(long ID, Scanner sc, Mode mode) {
+    public static LabWork setElemScript(Long ID) {
+        setScanner(ProgramState.getScanner());
         LabWork elem = new LabWork();
         String name = null;
         Double coordinatesX = null;
@@ -46,11 +41,9 @@ public class UsrInputReceiver {
         Float locationZ = null;
         Person author = new Person();
 
-        if (mode.equals(Mode.ADD)) {
-            elem.setId();
-        }
-        if (mode.equals(Mode.UPDATE)) {
-            elem.setId(ID);
+        switch (ProgramState.getMode()) {
+            case ADD -> elem.setId();
+            case UPDATE -> elem.setId(ID);
         }
         System.out.println(client.io.OutputEngine.insertName());
         do {
@@ -240,8 +233,9 @@ public class UsrInputReceiver {
         elem.setAuthor(author);
         return elem;
     }
-    public void addElem(Scanner scanner, Mode mode) {
-        CollectionsEngine.addElem(setElemScript( 0, 0, scanner, mode));
+    public static void addElemValidation() {
+        setElemScript(null);
+
     }
 
     public void update(String arg, Scanner scanner, Mode mode) {
@@ -264,18 +258,19 @@ public class UsrInputReceiver {
         return false;
     }
     public void executeScriptValidation(String filename) {
+        ProgramState.setMode(Mode.FILE);
         iterations++;
         if (iterations>499) {
             System.out.println(OutputEngine.stackOverflowError());
             return;
         }
-        InputEngine.launcher(null, Mode.FILE, null, filename);
+        InputEngine.launcher(null, null, filename);
     }
     public void removeLowerValidation(long id) {
         CollectionsEngine.removeLower(id);
     }
-    public void countLessThanMinimalPointValidation(double minimal_point) {
-        CollectionsEngine.countLessThanMinimalPoint(minimal_point);
+    public static boolean countLessThanMinimalPointValidation(double minimal_point) {
+        return Validator.checkMinimalPoint(minimal_point);
     }
 
 

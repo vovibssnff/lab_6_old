@@ -12,6 +12,6 @@ public class ExecuteScriptCmd implements Command{
         this.collection_receiver=collection_receiver;
     }
     @Override
-    public void execute(String arg, Scanner scanner, Mode mode) {collection_receiver.execute_script(arg);}
+    public void execute(String arg) {collection_receiver.execute_script(arg);}
     public static String getName() {return "execute_script";}
 }

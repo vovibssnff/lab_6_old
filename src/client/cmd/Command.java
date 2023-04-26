@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public interface Command {
 
-    default void execute(String arg, Scanner scanner, Mode mode) {
+    default void execute(String arg) {
 
     }
     default boolean validate(String arg) {return true;}

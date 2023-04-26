@@ -1,5 +1,6 @@
 package client.cmd;
 
+import client.io.Validator;
 import client.managment.UsrInputReceiver;
 import client.io.OutputEngine;
 
@@ -14,7 +15,7 @@ public class CountLessThanMinimalPointCmd implements Command {
     public boolean validate(String arg) {
         if (arg!=null) {
             try {
-                receiver.countLessThanMinimalPoint(Double.parseDouble(arg));
+                return Validator.checkMinimalPoint(Double.parseDouble(arg));
             } catch (RuntimeException e) {
                 System.out.println(OutputEngine.incorrectDoubleArg());
             }
