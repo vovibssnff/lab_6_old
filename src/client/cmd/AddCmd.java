@@ -8,8 +8,8 @@ public class AddCmd implements Command {
     public AddCmd(UsrInputReceiver collection_receiver) {this.collection_receiver=collection_receiver;}
 
     @Override
-    public boolean validate(String arg) {
-        return UsrInputReceiver.addElemValidation();
+    public void execute(String arg) {
+        UsrInputReceiver.setElemScript(null);
     }
     public static String getName() {
         return "add";

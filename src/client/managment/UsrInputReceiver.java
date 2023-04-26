@@ -233,10 +233,6 @@ public class UsrInputReceiver {
         elem.setAuthor(author);
         return elem;
     }
-    public static void addElemValidation() {
-        setElemScript(null);
-
-    }
 
     public void update(String arg, Scanner scanner, Mode mode) {
         CollectionsEngine.update(CollectionsEngine.searchInCollection(Long.parseLong(arg)), setElemScript(1, Long.parseLong(arg), scanner, mode));
@@ -245,7 +241,7 @@ public class UsrInputReceiver {
     public void exit() {
         System.exit(0);
     }
-    public static boolean removeByIdValidator(String arg) {
+    public static boolean longValidator(String arg) {
         if (arg!=null) {
             try {
                 Long.parseLong(arg);
@@ -264,7 +260,7 @@ public class UsrInputReceiver {
             System.out.println(OutputEngine.stackOverflowError());
             return;
         }
-        InputEngine.launcher(null, null, filename);
+        InputEngine.launcher(null, filename);
     }
     public void removeLowerValidation(long id) {
         CollectionsEngine.removeLower(id);

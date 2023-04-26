@@ -12,7 +12,7 @@ public class RemoveByIdCmd implements Command {
     }
     @Override
     public boolean validate(String arg) {
-        return UsrInputReceiver.removeByIdValidator(arg);
+        return UsrInputReceiver.longValidator(arg);
     }
     public static String getName() {return "remove_by_id";}
 }

@@ -66,7 +66,8 @@ public class InputEngine {
             }
         }
         ProgramState.setMode(Mode.DEFAULT);
-        launcher(keyboardScanner, null, null);
+        ProgramState.setScanner(keyboardScanner);
+        launcher(null, null);
     }
     public static void scanCommand(String[] tokens, Command currentCommand, File tmpFile) {
         String input = ProgramState.getScanner().nextLine().trim();
@@ -85,7 +86,7 @@ public class InputEngine {
         }
         CollectionLoader.save(tmpFile);
     }
-    public static void launcher(Scanner sc, Command currentCommand, String filename) {
+    public static void launcher(Command currentCommand, String filename) {
         String[] tokens = new String[0];
         File file = null;
         try {
@@ -97,7 +98,6 @@ public class InputEngine {
 
             //Режим чтения команд с клавиатуры
             case DEFAULT -> {
-                ProgramState.setScanner(sc);
 
                 //Основной сканер
                 while (true) {
@@ -115,6 +115,7 @@ public class InputEngine {
 
                 Scanner fileScanner = null;
                 try {
+                    assert file != null;
                     fileScanner = new Scanner(file);
                     ProgramState.setScanner(fileScanner);
                 } catch (FileNotFoundException e) {

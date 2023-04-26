@@ -8,5 +8,9 @@ public class UpdateCmd implements Command {
     public UpdateCmd(UsrInputReceiver receiver) {
         this.receiver=receiver;
     }
+    @Override
+    public void execute(String arg) {
+        UsrInputReceiver.setElem(arg);
+    }
     public static String getName() {return "update";}
 }
