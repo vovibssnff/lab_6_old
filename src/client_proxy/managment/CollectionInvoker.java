@@ -1,7 +1,6 @@
-package client.managment;
-
-import client.io.Mode;
-import client.cmd.Command;
+package client_proxy.managment;
+import client_proxy.cmd.Command;
+import client_proxy.io.Mode;
 
 import java.util.Scanner;
 

@@ -3,10 +3,9 @@ package client.io;
 import client.connect.Transmitter;
 import client.load.CollectionLoader;
 import client.load.Parser;
-import client.managment.ProgramState;
-import client.managment.UsrInputReceiver;
-import client.managment.CollectionsEngine;
+import client.managment.*;
 import client.cmd.*;
+import client.managment.PrgrmState;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,6 +18,7 @@ import java.util.regex.Pattern;
  */
 public class InputEngine {
     private static final UsrInputReceiver receiver = new UsrInputReceiver();
+    private static final ProxyReceiver proxy = new ProxyReceiver();
     private static final File tmpFile = new File("unsaved.tmp");
     public static String resp = null;
     private static void validate(Command command, String arg) {
@@ -27,7 +27,7 @@ public class InputEngine {
         //TODO генерация инстанса Transmitter для передачи на сервак
     }
     public static void init() {
-        CollectionsEngine.addElemToCommandMap(AddCmd.getName(), new AddCmd(receiver));
+        CollectionsEngine.addElemToCommandMap(AddCmd.getName(), new AddCmd(receiver, proxy));
         CollectionsEngine.addElemToCommandMap(HelpCmd.getName(), new HelpCmd());
         CollectionsEngine.addElemToCommandMap(SoutCollectionCmd.getName(), new SoutCollectionCmd());
         CollectionsEngine.addElemToCommandMap(HistoryCmd.getName(), new HistoryCmd());
@@ -65,19 +65,12 @@ public class InputEngine {
                 CollectionLoader.load(tmpFile);
             }
         }
-        ProgramState.setMode(Mode.DEFAULT);
         ProgramState.setScanner(keyboardScanner);
-        launcher(null, null);
+        modeSwitcher(null, null);
     }
     public static void scanCommand(String[] tokens, Command currentCommand, File tmpFile) {
         String input = ProgramState.getScanner().nextLine().trim();
         tokens = input.split(" ");
-//        System.out.println("input: "+input+"tokens: "+ tokens[0]);
-//        if (input.equals("")) {
-//            scanner.nextLine();
-//            input = scanner.nextLine().trim();
-//        }
-        //tokens = (String[]) scanner.useDelimiter(" ").tokens().toArray();
         currentCommand = CollectionsEngine.searchCommand(tokens[0]);
         if (tokens.length<2) {
             validate(currentCommand, null);
@@ -86,7 +79,7 @@ public class InputEngine {
         }
         CollectionLoader.save(tmpFile);
     }
-    public static void launcher(Command currentCommand, String filename) {
+    public static void modeSwitcher(Command currentCommand, String filename) {
         String[] tokens = new String[0];
         File file = null;
         try {
@@ -98,10 +91,10 @@ public class InputEngine {
 
             //Режим чтения команд с клавиатуры
             case DEFAULT -> {
-
                 //Основной сканер
                 while (true) {
                     try {
+                        ProgramState.setMode(Mode.DEFAULT);
                         System.out.print(OutputEngine.prompt());
                         scanCommand(tokens, currentCommand, tmpFile);
                     } catch (NullPointerException e) {
@@ -118,6 +111,7 @@ public class InputEngine {
                     assert file != null;
                     fileScanner = new Scanner(file);
                     ProgramState.setScanner(fileScanner);
+                    PrgrmState.setMode(client.io.Mode.DEFAULT);
                 } catch (FileNotFoundException e) {
                     e.getStackTrace();
                 }

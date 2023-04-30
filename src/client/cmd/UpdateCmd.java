@@ -9,8 +9,8 @@ public class UpdateCmd implements Command {
         this.receiver=receiver;
     }
     @Override
-    public void execute(String arg) {
-        UsrInputReceiver.setElem(arg);
+    public boolean validate(String arg) {
+        return UsrInputReceiver.addValidator(arg);
     }
     public static String getName() {return "update";}
 }
