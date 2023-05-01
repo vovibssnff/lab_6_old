@@ -294,7 +294,7 @@ public class CollectionReceiver {
             System.out.println(OutputEngine.stackOverflowError());
             return;
         }
-        InputEngine.launcher(null, Mode.FILE, null, filename);
+        ServerConnector.launcher(null, Mode.FILE, null, filename);
     }
     public void exit() {
         if (Collections.saveCheck()) {

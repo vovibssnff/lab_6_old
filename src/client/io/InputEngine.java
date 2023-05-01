@@ -4,8 +4,9 @@ import client.connect.Transmitter;
 import client.load.CollectionLoader;
 import client.load.Parser;
 import client.managment.*;
-import client.cmd.*;
-import client.managment.PrgrmState;
+import Common.cmd.*;
+import client.managment.ProgramState;
+import common.cmd.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,9 +41,9 @@ public class InputEngine {
         CollectionsEngine.addElemToCommandMap(UpdateCmd.getName(), new UpdateCmd(receiver));
         CollectionsEngine.addElemToCommandMap(PrintFieldDescendingMinimalPointCmd.getName(), new PrintFieldDescendingMinimalPointCmd());
         CollectionsEngine.addElemToCommandMap(CountLessThanMinimalPointCmd.getName(), new CountLessThanMinimalPointCmd(receiver));
-        CollectionsEngine.addElemToCommandMap(RemoveLowerCmd.getName(), new RemoveLowerCmd(receiver));
+        CollectionsEngine.addElemToCommandMap(RemoveLowerCmd.getName(), new RemoveLowerCmd());
         CollectionsEngine.addElemToCommandMap(RemoveByIdCmd.getName(), new RemoveByIdCmd(receiver));
-        CollectionsEngine.addElemToCommandMap(ExecuteScriptCmd.getName(), new ExecuteScriptCmd(receiver));
+        CollectionsEngine.addElemToCommandMap(ExecuteScriptCmd.getName(), new ExecuteScriptCmd());
         CollectionsEngine.addElemsFromList(Parser.parse());
         CollectionsEngine.sortCollection();
         System.out.println(OutputEngine.greeting_msg());
@@ -71,7 +72,11 @@ public class InputEngine {
     public static void scanCommand(String[] tokens, Command currentCommand, File tmpFile) {
         String input = ProgramState.getScanner().nextLine().trim();
         tokens = input.split(" ");
-        currentCommand = CollectionsEngine.searchCommand(tokens[0]);
+
+            Class<?>[] args = { UsrInputReceiver.class, ProxyReceiver.class };
+            Command command = CollectionsEngine.searchCommand(tokens[0]);
+            currentCommand = command.cast(command);
+
         if (tokens.length<2) {
             validate(currentCommand, null);
         } else {
@@ -111,7 +116,7 @@ public class InputEngine {
                     assert file != null;
                     fileScanner = new Scanner(file);
                     ProgramState.setScanner(fileScanner);
-                    PrgrmState.setMode(client.io.Mode.DEFAULT);
+                    ProgramState.setMode(client.io.Mode.DEFAULT);
                 } catch (FileNotFoundException e) {
                     e.getStackTrace();
                 }

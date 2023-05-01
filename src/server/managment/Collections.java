@@ -1,6 +1,6 @@
 package server.managment;
 
-import server.cmd.*;
+import common.cmd.*;
 import server.data.*;
 import server.io.OutputEngine;
 

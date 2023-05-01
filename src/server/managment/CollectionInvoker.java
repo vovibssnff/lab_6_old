@@ -1,6 +1,5 @@
 package server.managment;
 import server.cmd.*;
-import server.io.Mode;
 
 import java.util.Scanner;
 

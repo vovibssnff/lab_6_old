@@ -1,7 +1,7 @@
 package client.managment;
 
 import client.io.OutputEngine;
-import client.cmd.Command;
+import common.cmd.Command;
 import client.data.LabWork;
 import client.data.Person;
 
@@ -30,30 +30,6 @@ public class CollectionsEngine {
     }
     public static Map<String, Command> getCommandMap() {
         return commandMap;
-    }
-
-    /**
-     * Проверка, были ли вызваны команды, изменяющие коллекцию, после вызова команды save
-     */
-    public static boolean saveCheck() {
-        int a=-1;
-        for (int i=0; i<commandList.size(); i++) {
-            if (commandList.get(i).equals(commandMap.get("save"))) {
-                a=i;
-            }
-        }
-        for (int i=a; i<commandList.size(); i++) {
-            if (commandList.stream().anyMatch(cmd ->
-                    cmd.equals(commandMap.get("add"))
-                    || cmd.equals(commandMap.get("update"))
-                    || cmd.equals(commandMap.get("delete"))
-                    || cmd.equals(commandMap.get("clear"))
-                    || cmd.equals(commandMap.get("remove_by_id"))
-                    || cmd.equals(commandMap.get("remove_lower")))) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**

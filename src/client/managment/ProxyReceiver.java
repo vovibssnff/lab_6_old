@@ -8,8 +8,7 @@ import client.io.InputEngine;
 import client.io.Mode;
 import client.io.OutputEngine;
 import client.io.Validator;
-import client_proxy.managment.PrgrmState;
-;
+import client.managment.ProgramState;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -44,7 +43,7 @@ public class ProxyReceiver {
      * @return elem - новый элемент коллекции
      */
     private LabWork setElemScript(int type, long ID) {
-        Scanner sc = PrgrmState.getScanner();
+        Scanner sc = ProgramState.getScanner();
 
         LabWork elem = new LabWork();
         String name = null;
