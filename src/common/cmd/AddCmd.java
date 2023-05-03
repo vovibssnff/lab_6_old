@@ -9,9 +9,13 @@ public class AddCmd implements Command {
     private UsrInputReceiver usrInputReceiver;
     private LabWorkService labWorkService;
     private LabWork elem;
-    public void setReceivers(UsrInputReceiver usrInputReceiver, LabWorkService labWorkService) {
+    @Override
+    public void setUsrInputReceiver(UsrInputReceiver usrInputReceiver) {
         this.usrInputReceiver=usrInputReceiver;
-        this.labWorkService = labWorkService;
+    }
+    @Override
+    public void setLabWorkService(LabWorkService labWorkService) {
+        this.labWorkService=labWorkService;
     }
     @Override
     public boolean setArg(String arg) {

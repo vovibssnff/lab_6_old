@@ -3,10 +3,12 @@ package common.cmd;
 
 import client.managment.LabWorkService;
 import client.managment.UsrInputReceiver;
+import common.data.LabWork;
 
 public interface Command {
 
     default void execute() {}
     default boolean setArg(String arg) {return true;}
-    void setReceivers(UsrInputReceiver usrInputReceiver, LabWorkService receiver);
+    default void setUsrInputReceiver(UsrInputReceiver usrInputReceiver) {}
+    default void setLabWorkService(LabWorkService labWorkService) {}
 }
