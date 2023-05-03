@@ -1,6 +1,6 @@
 package client.managment;
 
-import client.data.LabWork;
+import common.data.LabWork;
 
 import java.util.Comparator;
 

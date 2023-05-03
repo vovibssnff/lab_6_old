@@ -1,7 +1,7 @@
 package server.load;
 
 import server.managment.Collections;
-import server.data.LabWork;
+import common.data.LabWork;
 
 import java.io.*;
 import java.util.ArrayDeque;

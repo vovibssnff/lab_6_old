@@ -1,4 +1,4 @@
-package client.data;
+package common.data;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -11,7 +11,7 @@ public class Person implements Serializable {
     public Person() {
         this.name="default";
         this.passportID="00000XX";
-        this.eyeColor= Color.GREEN;
+        this.eyeColor=Color.GREEN;
         this.location=new Location(0, 0, 0);
     }
     public void setName(String name) {

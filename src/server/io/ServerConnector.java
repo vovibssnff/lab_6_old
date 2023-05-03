@@ -18,8 +18,8 @@ public class ServerConnector {
     private static final File tmpFile = new File("unsaved.tmp");
     public static String resp = null;
     public static void init() {
-        Collections.addElemToCommandMap(AddCmd.getName(), new AddCmd(receiver));
-        Collections.addElemToCommandMap(HelpCmd.getName(), new HelpCmd(receiver));
+        Collections.addElemToCommandMap(AddCmd.getName(), new AddCmd());
+        Collections.addElemToCommandMap(HelpCmd.getName(), new HelpCmd());
         Collections.addElemToCommandMap(SoutCollectionCmd.getName(), new SoutCollectionCmd(receiver));
         Collections.addElemToCommandMap(HistoryCmd.getName(), new HistoryCmd(receiver));
         Collections.addElemToCommandMap(PrintUniqueAuthorCmd.getName(), new PrintUniqueAuthorCmd(receiver));
@@ -33,7 +33,7 @@ public class ServerConnector {
         Collections.addElemToCommandMap(CountLessThanMinimalPointCmd.getName(), new CountLessThanMinimalPointCmd(receiver));
         Collections.addElemToCommandMap(RemoveLowerCmd.getName(), new RemoveLowerCmd(receiver));
         Collections.addElemToCommandMap(RemoveByIdCmd.getName(), new RemoveByIdCmd(receiver));
-        Collections.addElemToCommandMap(ExecuteScriptCmd.getName(), new ExecuteScriptCmd(receiver));
+        Collections.addElemToCommandMap(ExecuteScriptCmd.getName(), new ExecuteScriptCmd());
         Collections.addElemsFromList(Parser.parse());
         Collections.sortCollection();
         System.out.println(OutputEngine.greeting_msg());

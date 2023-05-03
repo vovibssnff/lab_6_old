@@ -1,4 +1,4 @@
-package client.data;
+package common.data;
 
 import server.managment.Collections;
 
@@ -19,7 +19,7 @@ public class LabWork implements Comparable<LabWork>, Serializable {
         this.name="Default";
         this.coordinates=new Coordinates();
         this.minimalPoint=0;
-        this.difficulty= Difficulty.IMPOSSIBLE;
+        this.difficulty=Difficulty.IMPOSSIBLE;
         this.author=new Person();
     }
     public void setId() {

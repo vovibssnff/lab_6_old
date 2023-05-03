@@ -1,27 +1,30 @@
 package common.cmd;
 
-import client.data.LabWork;
-import client.managment.ProxyReceiver;
+import client.io.ElemInputService;
+import client.managment.LabWorkService;
+import common.data.LabWork;
 import client.managment.UsrInputReceiver;
 
 public class AddCmd implements Command {
-    private UsrInputReceiver receiver;
-    private ProxyReceiver proxy;
+    private UsrInputReceiver usrInputReceiver;
+    private LabWorkService labWorkService;
     private LabWork elem;
-    public AddCmd(UsrInputReceiver receiver, ProxyReceiver proxy) {
-        this.receiver=receiver;
-        this.proxy=proxy;
+    public void setReceivers(UsrInputReceiver usrInputReceiver, LabWorkService labWorkService) {
+        this.usrInputReceiver=usrInputReceiver;
+        this.labWorkService = labWorkService;
     }
     @Override
-    public boolean validate(String arg) {
-        this.elem=UsrInputReceiver.setElemScript(null);
+    public boolean setArg(String arg) {
+        this.elem= ElemInputService.setElemScript(null);
         if (!this.elem.equals(null)) {
             return true;
         } else {
             return false;
         }
     }
-    public void execute() {proxy.addElem();}
+    @Override
+    public void execute() {this.labWorkService.addElem(this.getArg());}
+    public LabWork getArg() {return this.elem;}
     public static String getName() {
         return "add";
     }

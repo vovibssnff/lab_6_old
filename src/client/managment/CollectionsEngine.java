@@ -2,9 +2,7 @@ package client.managment;
 
 import client.io.OutputEngine;
 import common.cmd.Command;
-import client.data.LabWork;
-import client.data.Person;
-
+import common.data.*;
 import java.util.*;
 
 /**

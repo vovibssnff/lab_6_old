@@ -1,7 +1,7 @@
 package server.managment;
 
-import server.data.Color;
-import server.data.Difficulty;
+import common.data.Color;
+import common.data.Difficulty;
 import server.io.OutputEngine;
 
 import java.util.regex.Matcher;

@@ -1,6 +1,6 @@
 package server.managment;
 
-import server.data.LabWork;
+import common.data.LabWork;
 
 import java.util.Comparator;
 

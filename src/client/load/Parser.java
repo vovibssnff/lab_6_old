@@ -7,7 +7,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import client.io.OutputEngine;
 import client.io.Validator;
-import client.data.LabWork;
+import common.data.LabWork;
 
 import java.io.FileInputStream;
 import java.io.FileReader;

@@ -1,4 +1,4 @@
-package server.data;
+package common.data;
 
 
 import java.io.Serializable;

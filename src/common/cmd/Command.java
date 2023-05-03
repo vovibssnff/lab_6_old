@@ -1,16 +1,12 @@
 package common.cmd;
 
 
+import client.managment.LabWorkService;
+import client.managment.UsrInputReceiver;
+
 public interface Command {
 
     default void execute() {}
-    default boolean validate(String arg) {return true;}
-    default Command cast(Command command) {
-        try {
-            return (Command) command.clone();
-        } catch (CloneNotSupportedException e) {
-            e.getMessage();
-        }
-        return command;
-    }
+    default boolean setArg(String arg) {return true;}
+    void setReceivers(UsrInputReceiver usrInputReceiver, LabWorkService receiver);
 }

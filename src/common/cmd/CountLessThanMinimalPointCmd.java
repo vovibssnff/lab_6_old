@@ -7,12 +7,9 @@ import client.io.OutputEngine;
 public class CountLessThanMinimalPointCmd implements Command {
     private UsrInputReceiver receiver;
     private double minimalPoint;
-    public CountLessThanMinimalPointCmd(UsrInputReceiver collection_receiver) {
-        this.receiver=collection_receiver;
-    }
 
     @Override
-    public boolean validate(String arg) {
+    public boolean setArg(String arg) {
         if (arg!=null) {
             try {
                 return Validator.checkMinimalPoint(Double.parseDouble(arg));

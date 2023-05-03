@@ -1,7 +1,6 @@
 package client.io;
 
-import client.data.Color;
-import client.data.Difficulty;
+import common.data.*;
 import client.managment.CollectionsEngine;
 
 import java.util.regex.Matcher;
