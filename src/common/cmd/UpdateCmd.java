@@ -7,7 +7,7 @@ public class UpdateCmd implements Command {
     private int id;
     @Override
     public boolean setArg(String arg) {
-        return UsrInputReceiver.addValidator(arg);
+        return UsrInputReceiver.update();
     }
     public static String getName() {return "update";}
 }

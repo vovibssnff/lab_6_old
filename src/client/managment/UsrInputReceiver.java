@@ -1,21 +1,13 @@
 package client.managment;
 
 import client.io.*;
-import common.data.*;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import common.data.LabWork;
 
 /**
  * Класс, выполняющий команды
  */
 public class UsrInputReceiver {
-    private static Scanner sc;
     public int iterations = 0;
-
-    public static void setScanner(Scanner scanner) {
-        sc=scanner;
-    }
 
     public void update(String arg) {
         CollectionsEngine.update(CollectionsEngine.searchInCollection(Long.parseLong(arg)), ElemInputService.setElemScript(Long.parseLong(arg)));
@@ -24,9 +16,9 @@ public class UsrInputReceiver {
     public void exit() {
         System.exit(0);
     }
-    public static boolean addValidator(String arg) {
-        ElemInputService.setElemScript(null);
-        return true;
+
+    public LabWork add(String arg) {
+        return ElemInputService.setElemScript(null);
     }
     public static boolean longValidator(String arg) {
         if (arg!=null) {

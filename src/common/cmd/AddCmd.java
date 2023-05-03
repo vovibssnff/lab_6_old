@@ -15,7 +15,7 @@ public class AddCmd implements Command {
     }
     @Override
     public boolean setArg(String arg) {
-        this.elem= ElemInputService.setElemScript(null);
+        this.elem=usrInputReceiver.add(null);
         if (!this.elem.equals(null)) {
             return true;
         } else {

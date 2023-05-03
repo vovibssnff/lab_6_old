@@ -22,7 +22,7 @@ public class InputEngine {
     private static final File tmpFile = new File("unsaved.tmp");
     public static String resp = null;
     private static void launchInvoke(Command command, String arg) {
-
+        command.setReceivers(ProgramState.getUsrInputReceiver(), ProgramState.getLabWorkService());
         if (command.setArg(arg)) {
             command.execute();
         }
@@ -87,7 +87,6 @@ public class InputEngine {
         } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
-        currentCommand.setReceivers(ProgramState.getUsrInputReceiver(), ProgramState.getLabWorkService());
         if (tokens.length<2) {
             launchInvoke(currentCommand, null);
         } else {

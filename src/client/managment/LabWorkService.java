@@ -39,7 +39,7 @@ public class LabWorkService {
 
     public void addElem(LabWork elem) {}
 
-    public void update() {}
+    public void update(LabWork elem) {}
 
     public void removeById(Long id) {}
 
