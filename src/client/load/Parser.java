@@ -1,5 +1,6 @@
 package client.load;
 
+import client.managment.ProgramState;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
@@ -22,7 +23,7 @@ import java.util.Properties;
  */
 public class Parser {
     public static ArrayList<LabWork> parse() {
-        Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).create();
+        Gson gson = ProgramState.getGson();
         ArrayList<LabWork> labWorkList = new ArrayList<>();
         Properties prop = new Properties();
         InputStream input = null;

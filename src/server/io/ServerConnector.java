@@ -1,4 +1,5 @@
 package server.io;
+import com.google.gson.Gson;
 import server.managment.Collections;
 import server.managment.CollectionReceiver;
 import common.cmd.*;
@@ -8,6 +9,12 @@ import server.managment.ServerState;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.DatagramChannel;
 import java.util.*;
 
 /**
@@ -18,6 +25,38 @@ public class ServerConnector {
     private static final File tmpFile = new File("unsaved.tmp");
     public static String resp = null;
     public static void init() {
+        DatagramChannel channel = DatagramChannel.open();
+        try {
+            channel.bind(new InetSocketAddress(8080));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        while (true) {
+            buffer.clear();
+            try {
+                channel.receive(buffer);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            buffer.flip();
+            String jsonRequest = new String(buffer.array(), 0, buffer.limit());
+            Gson gson = new Gson();
+            String request = gson.fromJson(jsonRequest, String.class);
+            String responce = "abobus_sus_amogus";
+            String jsonResponce = gson.toJson(responce);
+            buffer.clear();
+            buffer.put(jsonResponce.getBytes());
+            buffer.flip();
+
+            try {
+                channel.send(buffer, new InetSocketAddress("localhost", 8081));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+
 
         Collections.addElemsFromList(Parser.parse());
         Collections.sortCollection();

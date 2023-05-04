@@ -1,7 +1,11 @@
 package client.managment;
 
 import client.io.Mode;
+import client.load.LocalDateTimeAdapter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
 
 public class ProgramState {
@@ -9,6 +13,8 @@ public class ProgramState {
     private static Scanner sc;
     private static UsrInputReceiver usrInputReceiver;
     private static LabWorkService labWorkService;
+    private static Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+
 
     public static void setMode(Mode mode) {
         md = mode;
@@ -35,4 +41,5 @@ public class ProgramState {
     public static LabWorkService getLabWorkService() {
         return labWorkService;
     }
+    public static Gson getGson() {return ProgramState.gson;}
 }

@@ -1,9 +1,10 @@
 package client.load;
 
+import client.managment.ProgramState;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonWriter;
-import client.data.LabWork;
+import common.data.LabWork;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,7 +18,7 @@ import java.util.ArrayDeque;
 public class Serializer {
     public static void save(ArrayDeque<LabWork> collection) {
 
-        Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+        Gson gson = ProgramState.getGson();
 
         try (PrintWriter out = new PrintWriter(new FileWriter("collection.json"))) {
             JsonWriter writer = gson.newJsonWriter(out);
