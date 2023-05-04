@@ -1,6 +1,6 @@
 package server.load;
 import server.managment.Validator;
-import server.data.LabWork;
+import common.data.LabWork;
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import server.io.OutputEngine;

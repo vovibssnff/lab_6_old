@@ -1,7 +1,7 @@
 package server.managment;
 
-import server.cmd.*;
-import server.data.*;
+import common.cmd.*;
+import common.data.*;
 import server.io.OutputEngine;
 
 import java.util.*;

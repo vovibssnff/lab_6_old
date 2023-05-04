@@ -1,5 +1,5 @@
 package server.load;
-import server.data.LabWork;
+import common.data.LabWork;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonWriter;
