@@ -2,7 +2,6 @@ package client.load;
 
 import client.managment.ProgramState;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.stream.JsonWriter;
 import common.data.LabWork;
 
