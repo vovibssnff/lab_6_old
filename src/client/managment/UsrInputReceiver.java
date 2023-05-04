@@ -235,7 +235,7 @@ public class UsrInputReceiver {
     }
     public static void addElemValidation() {
         setElemScript(null);
-
+        return true;
     }
 
     public void update(String arg, Scanner scanner, Mode mode) {
