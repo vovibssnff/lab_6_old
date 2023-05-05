@@ -24,9 +24,8 @@ public class InputEngine {
     private static void launchInvoke(Command command, String arg) {
         command.setUsrInputReceiver(ProgramState.getUsrInputReceiver());
         command.setLabWorkService(ProgramState.getLabWorkService());
-        if (command.setArg(arg)) {
-            command.execute();
-        }
+        command.setArg(arg);
+        command.execute();
     }
     public static void init() {
         CollectionsEngine.addElemToCommandMap(AddCmd.getName(), new AddCmd());
@@ -35,7 +34,6 @@ public class InputEngine {
         CollectionsEngine.addElemToCommandMap(HistoryCmd.getName(), new HistoryCmd());
         CollectionsEngine.addElemToCommandMap(PrintUniqueAuthorCmd.getName(), new PrintUniqueAuthorCmd());
         CollectionsEngine.addElemToCommandMap(ClearCmd.getName(), new ClearCmd());
-        CollectionsEngine.addElemToCommandMap(SaveCmd.getName(), new SaveCmd());
         CollectionsEngine.addElemToCommandMap(HeadCmd.getName(), new HeadCmd());
         CollectionsEngine.addElemToCommandMap(InfoCmd.getName(), new InfoCmd());
         CollectionsEngine.addElemToCommandMap(ExitCmd.getName(), new ExitCmd());
@@ -46,7 +44,7 @@ public class InputEngine {
         CollectionsEngine.addElemToCommandMap(RemoveByIdCmd.getName(), new RemoveByIdCmd());
         CollectionsEngine.addElemToCommandMap(ExecuteScriptCmd.getName(), new ExecuteScriptCmd());
         CollectionsEngine.addElemsFromList(Parser.parse());
-        CollectionsEngine.sortCollection();
+        //CollectionsEngine.sortCollection();
         System.out.println(OutputEngine.greeting_msg());
         Scanner keyboardScanner = new Scanner(System.in);
 

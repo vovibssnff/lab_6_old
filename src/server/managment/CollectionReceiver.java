@@ -1,6 +1,4 @@
 package server.managment;
-import common.cmd.CustomReceiver;
-import common.data.*;
 import server.load.Serializer;
 import server.io.*;
 

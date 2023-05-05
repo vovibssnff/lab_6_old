@@ -1,8 +1,13 @@
 package common.cmd;
 
+import client.io.OutputEngine;
 import client.managment.UsrInputReceiver;
 
 public class ExitCmd implements Command {
-    private UsrInputReceiver collection_receiver;
+
+    @Override
+    public void execute() {
+        System.exit(0);
+    }
     public static String getName() {return "exit";}
 }

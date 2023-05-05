@@ -47,18 +47,7 @@ public class Parser {
             while(reader.hasNext()) {
                 JsonObject obj = JsonParser.parseReader(reader).getAsJsonObject();
                 LabWork lbwork = gson.fromJson(obj, LabWork.class);
-                if (Validator.checkName(lbwork.getName())&&
-                        Validator.checkId(lbwork.getId())&&
-                        Validator.checkDifficulty(lbwork.getDifficulty())&&
-                        Validator.checkMinimalPoint(lbwork.getMinimalPoint())&&
-                        Validator.checkCreationDate(lbwork.getCreationDate().toString())&&
-                        Validator.checkCoordinatesX(lbwork.getCoordinates().getX())&&
-                        Validator.checkCoordinatesY(lbwork.getCoordinates().getY())&&
-                        Validator.checkAuthorName(lbwork.getAuthor().getName())&&
-                        Validator.checkPassportId(lbwork.getAuthor().getPassportID())&&
-                        Validator.checkColor(lbwork.getAuthor().getEyeColor())&&
-                        Validator.checkLocationX(lbwork.getAuthor().getLocation().getX())&&
-                        Validator.checkLocationY(lbwork.getAuthor().getLocation().getY())) {
+                if () {
                     labWorkList.add(lbwork);
                     System.out.println(lbwork);
                 } else {

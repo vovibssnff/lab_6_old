@@ -3,43 +3,49 @@ package client.managment;
 import client.io.*;
 import common.data.LabWork;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Класс, выполняющий команды
  */
 public class UsrInputReceiver {
     public int iterations = 0;
 
-    public static void update(String arg) {
-        CollectionsEngine.update(CollectionsEngine.searchInCollection(Long.parseLong(arg)), ElemInputService.setElemScript(Long.parseLong(arg)));
-    }
-
     public void exit() {
         System.exit(0);
     }
 
-    public LabWork add(String arg) {
+    public LabWork add() {
         return ElemInputService.setElemScript(null);
     }
-    public static boolean longValidator(String arg) {
+    public LabWork update(Long arg) {return ElemInputService.setElemScript(arg);}
+    public <T> boolean typeValidator(String arg, Class<T> clazz) {
         if (arg!=null) {
             try {
-                switch (ProgramState.getMode()) {
-                    case ADD -> {
-                        ElemInputService.setElemScript(null);
-                        return true;
-                    }
-                    case UPDATE -> {
-                        ElemInputService.setElemScript(Long.parseLong(arg));
-                        return true;
-                    }
-                }
-            } catch (RuntimeException e) {
-                System.out.println(server.io.OutputEngine.incorrectLongArg());
-                return false;
+                clazz.getConstructor(String.class).newInstance(arg);
+                return true;
+            } catch (Exception e) {
+                System.out.println(OutputEngine.incorrectArg()+clazz.getName());
             }
         }
         return false;
     }
+
+    public <T> T setArg(String arg, Class<T> clazz) {
+        try {
+            return clazz.getConstructor(String.class).newInstance(arg);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void executeScriptValidation(String filename) {
         ProgramState.setMode(Mode.FILE);
         iterations++;
@@ -48,12 +54,6 @@ public class UsrInputReceiver {
             return;
         }
         InputEngine.modeSwitcher(null, filename);
-    }
-    public void removeLowerValidation(long id) {
-        CollectionsEngine.removeLower(id);
-    }
-    public static boolean countLessThanMinimalPointValidation(double minimal_point) {
-        return Validator.checkMinimalPoint(minimal_point);
     }
 
 

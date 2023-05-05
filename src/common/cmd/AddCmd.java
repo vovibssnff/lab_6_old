@@ -1,6 +1,7 @@
 package common.cmd;
 
 import client.io.ElemInputService;
+import client.io.OutputEngine;
 import client.managment.LabWorkService;
 import common.data.LabWork;
 import client.managment.UsrInputReceiver;
@@ -18,17 +19,18 @@ public class AddCmd implements Command {
         this.labWorkService=labWorkService;
     }
     @Override
-    public boolean setArg(String arg) {
-        this.elem=usrInputReceiver.add(null);
-        if (!this.elem.equals(null)) {
-            return true;
-        } else {
-            return false;
+    public void setArg(String arg) {
+        LabWork elem = this.usrInputReceiver.add();
+        if (elem!=null) {
+            this.elem=elem;
         }
     }
     @Override
-    public void execute() {this.labWorkService.addElem(this.getArg());}
-    public LabWork getArg() {return this.elem;}
+    public void execute() {
+        if (this.elem!=null) {
+            this.labWorkService.addElem(this.elem);
+        }
+    }
     public static String getName() {
         return "add";
     }

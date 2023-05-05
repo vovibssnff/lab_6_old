@@ -1,14 +1,8 @@
 package client.managment;
 
-import common.cmd.Command;
-import common.cmd.CustomReceiver;
 import common.data.*;
 import client.io.InputEngine;
 import client.io.OutputEngine;
-import client.io.Validator;
-
-import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class LabWorkService {
     public int iterations=0;
@@ -45,8 +39,6 @@ public class LabWorkService {
 
     public void clear() {}
 
-    public void save(String filename) {}
-
     public void executeScript(String filename) {
         iterations++;
         if (iterations>499) {
@@ -62,7 +54,7 @@ public class LabWorkService {
 
     public void head() {}
 
-    public void removeLower() {}
+    public void removeLower(Long id) {}
 
     public void history() {}
 

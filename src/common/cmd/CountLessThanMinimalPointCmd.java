@@ -1,23 +1,35 @@
 package common.cmd;
 
-import client.io.Validator;
+import client.managment.LabWorkService;
 import client.managment.UsrInputReceiver;
 import client.io.OutputEngine;
 
 public class CountLessThanMinimalPointCmd implements Command {
-    private UsrInputReceiver receiver;
-    private double minimalPoint;
+    private UsrInputReceiver usrInputReceiver;
+    private LabWorkService labWorkService;
+    private Double minimalPoint;
+    @Override
+    public void setUsrInputReceiver(UsrInputReceiver usrInputReceiver) {
+        this.usrInputReceiver=usrInputReceiver;
+    }
+    @Override
+    public void setLabWorkService(LabWorkService labWorkService) {
+        this.labWorkService=labWorkService;
+    }
 
     @Override
-    public boolean setArg(String arg) {
-        if (arg!=null) {
-            try {
-                return Validator.checkMinimalPoint(Double.parseDouble(arg));
-            } catch (RuntimeException e) {
-                System.out.println(OutputEngine.incorrectDoubleArg());
-            }
+    public void setArg(String arg) {
+        if (this.usrInputReceiver.typeValidator(arg, Double.class)) {
+            this.minimalPoint = this.usrInputReceiver.setArg(arg, Double.class);
         }
-        return false;
+    }
+    @Override
+    public void execute() {
+        if (this.minimalPoint!=null) {
+            this.labWorkService.countLessThanMinimalPoint(this.minimalPoint);
+        } else {
+            System.out.println(OutputEngine.incorrectDoubleArg());
+        }
     }
     public static String getName() {return "cltmp";}
 }
