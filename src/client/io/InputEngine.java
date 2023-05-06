@@ -1,7 +1,6 @@
 package client.io;
 
-import client.load.CollectionLoader;
-import client.load.Parser;
+import client.ClientConnectionService;
 import client.managment.*;
 import common.OutputEngine;
 import common.cmd.*;
@@ -29,6 +28,7 @@ public class InputEngine {
         command.execute();
     }
     public static void init() {
+        ClientConnectionService.init();
         CollectionsEngine.addElemToCommandMap(AddCmd.getName(), new AddCmd());
         CollectionsEngine.addElemToCommandMap(HelpCmd.getName(), new HelpCmd());
         CollectionsEngine.addElemToCommandMap(SoutCollectionCmd.getName(), new SoutCollectionCmd());

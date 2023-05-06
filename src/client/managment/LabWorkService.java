@@ -1,6 +1,6 @@
 package client.managment;
 
-import client.ConnectorService;
+import client.ClientConnectionService;
 import common.data.*;
 import client.io.InputEngine;
 import common.OutputEngine;
@@ -29,7 +29,7 @@ public class LabWorkService {
     public void info() {}
 
     public void soutCollection() {
-        System.out.println(ConnectorService.sendRequest("show"));
+        System.out.println(ClientConnectionService.sendRequest("show"));
     }
 
     public void addElem(LabWork elem) {}

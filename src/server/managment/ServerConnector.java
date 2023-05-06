@@ -1,7 +1,7 @@
 package server.managment;
 
 import com.google.gson.Gson;
-import server.ConnectionService;
+import server.ServerConnectionService;
 import common.OutputEngine;
 import common.cmd.*;
 import server.load.CollectionLoader;
@@ -23,7 +23,7 @@ public class ServerConnector {
         System.out.println(OutputEngine.greeting_msg());
         Scanner keyboardScanner = new Scanner(System.in);
 
-        ConnectionService.connect();
+        ServerConnectionService.connect();
     }
     public static void commandExecute(Command currentCommand, File tmpFile) {
         currentCommand.execute();
