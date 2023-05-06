@@ -1,8 +1,8 @@
 package server.managment;
 
+import common.*;
 import common.data.Color;
 import common.data.Difficulty;
-import server.io.OutputEngine;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,6 +1,7 @@
 package client.managment;
 
 import client.io.*;
+import common.OutputEngine;
 import common.data.LabWork;
 
 import java.lang.reflect.InvocationTargetException;

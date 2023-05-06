@@ -1,6 +1,7 @@
 package server.managment;
+import common.data.LabWork;
 import server.load.Serializer;
-import server.io.*;
+import common.OutputEngine;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -44,7 +45,7 @@ public class CollectionReceiver {
 
 
     public void addElem() {
-        Collections.addElem();
+        Collections.addElem(new LabWork());
     }
     public void update(String arg, Scanner scanner, Mode mode) {
         Collections.update(Collections.searchInCollection(Long.parseLong(arg)), setElemScript(Long.parseLong(arg)));
@@ -68,7 +69,7 @@ public class CollectionReceiver {
             System.out.println(OutputEngine.stackOverflowError());
             return;
         }
-        ServerConnector.launcher(null, Mode.FILE, null, filename);
+        //ServerConnector.launcher(null, Mode.FILE, null, filename);
     }
     public void exit() {
         if (Collections.saveCheck()) {

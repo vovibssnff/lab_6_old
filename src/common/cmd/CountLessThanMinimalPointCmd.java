@@ -2,7 +2,7 @@ package common.cmd;
 
 import client.managment.LabWorkService;
 import client.managment.UsrInputReceiver;
-import client.io.OutputEngine;
+import common.OutputEngine;
 
 public class CountLessThanMinimalPointCmd implements Command {
     private UsrInputReceiver usrInputReceiver;

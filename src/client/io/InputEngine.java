@@ -3,6 +3,7 @@ package client.io;
 import client.load.CollectionLoader;
 import client.load.Parser;
 import client.managment.*;
+import common.OutputEngine;
 import common.cmd.*;
 import client.managment.ProgramState;
 
@@ -43,11 +44,11 @@ public class InputEngine {
         CollectionsEngine.addElemToCommandMap(RemoveLowerCmd.getName(), new RemoveLowerCmd());
         CollectionsEngine.addElemToCommandMap(RemoveByIdCmd.getName(), new RemoveByIdCmd());
         CollectionsEngine.addElemToCommandMap(ExecuteScriptCmd.getName(), new ExecuteScriptCmd());
-        CollectionsEngine.addElemsFromList(Parser.parse());
+        //CollectionsEngine.addElemsFromList(Parser.parse());
         //CollectionsEngine.sortCollection();
         System.out.println(OutputEngine.greeting_msg());
         Scanner keyboardScanner = new Scanner(System.in);
-
+        ProgramState.setMode(Mode.DEFAULT);
         Pattern pattern = Pattern.compile("^[yn]$");
         //Восстановление старых данных
         if (tmpFile.exists()&&tmpFile.length()!=0) {
@@ -62,7 +63,7 @@ public class InputEngine {
                 }
             } while (!pattern.matcher(resp).matches());
             if (resp.equals("y")) {
-                CollectionLoader.load(tmpFile);
+                //CollectionLoader.load(tmpFile);
             }
         }
         ProgramState.setScanner(keyboardScanner);
@@ -91,7 +92,7 @@ public class InputEngine {
         } else {
             launchInvoke(currentCommand, tokens[1]);
         }
-        CollectionLoader.save(tmpFile);
+        //CollectionLoader.save(tmpFile);
     }
     public static void modeSwitcher(Command currentCommand, String filename) {
         String[] tokens = new String[0];

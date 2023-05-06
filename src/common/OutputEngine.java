@@ -1,4 +1,4 @@
-package server.io;
+package common;
 
 import java.util.ResourceBundle;
 
@@ -62,6 +62,7 @@ public class OutputEngine {
     public static String incorrectLocationZ()  {return(messages.getString("incorrectLocationZ"));}
     public static String incorrectLongArg() {return(messages.getString("incorrectLongArg"));}
     public static String incorrectDoubleArg() {return(messages.getString("incorrectDoubleArg"));}
+    public static String incorrectArg() {return(messages.getString("incorrectArg"));}
 
     public static String correctId() {return(messages.getString("correctId"));}
     public static String correctName() {return(messages.getString("correctName"));}

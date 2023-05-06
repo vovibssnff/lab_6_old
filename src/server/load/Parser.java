@@ -3,7 +3,7 @@ import server.managment.Validator;
 import common.data.LabWork;
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
-import server.io.OutputEngine;
+import common.OutputEngine;
 
 import java.io.*;
 import java.time.LocalDateTime;

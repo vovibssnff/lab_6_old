@@ -1,7 +1,7 @@
 package client.io;
 
 import client.managment.ProgramState;
-import client.managment.UsrInputReceiver;
+import common.OutputEngine;
 import common.data.Color;
 import common.data.Difficulty;
 import common.data.LabWork;

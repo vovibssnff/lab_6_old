@@ -1,10 +1,6 @@
 package common.cmd;
 
-import client.io.InputEngine;
-import client.io.Mode;
-import client.io.OutputEngine;
 import client.managment.LabWorkService;
-import client.managment.ProgramState;
 import client.managment.UsrInputReceiver;
 
 public class ExecuteScriptCmd implements Command {

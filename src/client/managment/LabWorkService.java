@@ -1,8 +1,9 @@
 package client.managment;
 
+import client.ConnectorService;
 import common.data.*;
 import client.io.InputEngine;
-import client.io.OutputEngine;
+import common.OutputEngine;
 
 public class LabWorkService {
     public int iterations=0;
@@ -28,7 +29,7 @@ public class LabWorkService {
     public void info() {}
 
     public void soutCollection() {
-
+        System.out.println(ConnectorService.sendRequest("show"));
     }
 
     public void addElem(LabWork elem) {}

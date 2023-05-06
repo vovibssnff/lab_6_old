@@ -1,6 +1,5 @@
 package client.managment;
 
-import client.io.OutputEngine;
 import common.cmd.Command;
 import common.data.*;
 import java.util.*;
@@ -54,17 +53,17 @@ public class CollectionsEngine {
      * @see LabWork
      * @throws NullPointerException - бросает исключение при пустом списке
      */
-    public static void addElemsFromList(ArrayList<LabWork> labWorkArrayList) throws NullPointerException {
-        try {
-            collection.addAll(labWorkArrayList);
-            System.out.println(OutputEngine.successAddElems());
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
+//    public static void addElemsFromList(ArrayList<LabWork> labWorkArrayList) throws NullPointerException {
+//        try {
+//            collection.addAll(labWorkArrayList);
+//            System.out.println(OutputEngine.successAddElems());
+//        } catch (NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
-    }
-
-    public static void setCollection(ArrayDeque<LabWork> c) {
-        collection = c;
-    }
+//    public static void setCollection(ArrayDeque<LabWork> c) {
+//        collection = c;
+//    }
 }

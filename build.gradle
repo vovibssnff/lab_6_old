@@ -12,8 +12,20 @@ repositories {
 
 jar {
     duplicatesStrategy=DuplicatesStrategy.INCLUDE
+    baseName 'server'
     manifest {
-        attributes "Main-Class": "Main"
+        attributes "Main-Class": "server/ServerLauncher"
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+tasks.register('client', Jar) {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    baseName 'client'
+    manifest {
+        attributes "Main-Class": "client/ClientLauncher"
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
@@ -33,7 +45,9 @@ sourceSets {
         }
     }
 }
+
 compileJava.options.encoding = 'UTF-8'
+
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'

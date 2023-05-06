@@ -1,7 +1,5 @@
 package common.cmd;
 
-import client.io.ElemInputService;
-import client.io.OutputEngine;
 import client.managment.LabWorkService;
 import common.data.LabWork;
 import client.managment.UsrInputReceiver;

@@ -2,19 +2,16 @@ package client.load;
 
 import client.managment.ProgramState;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
-import client.io.OutputEngine;
-import client.io.Validator;
+import common.OutputEngine;
 import common.data.LabWork;
 
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Properties;
 
@@ -47,12 +44,12 @@ public class Parser {
             while(reader.hasNext()) {
                 JsonObject obj = JsonParser.parseReader(reader).getAsJsonObject();
                 LabWork lbwork = gson.fromJson(obj, LabWork.class);
-                if () {
-                    labWorkList.add(lbwork);
-                    System.out.println(lbwork);
-                } else {
-                    System.out.println(OutputEngine.incorrectObject());
-                }
+//                if () {
+//                    labWorkList.add(lbwork);
+//                    System.out.println(lbwork);
+//                } else {
+//                    System.out.println(OutputEngine.incorrectObject());
+//                }
             }
             reader.endArray();
             System.out.println(OutputEngine.successImport());

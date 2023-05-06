@@ -1,6 +1,6 @@
 package server;
 
-import server.io.ServerConnector;
+import server.managment.ServerConnector;
 
 public class ServerLauncher {
     public static void main(String[] args) {
