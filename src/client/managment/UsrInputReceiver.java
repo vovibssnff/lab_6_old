@@ -20,7 +20,7 @@ public class UsrInputReceiver {
     }
     public LabWork update(Long arg) {return ElemInputService.setElemScript(arg);}
     public <T> boolean typeValidator(String arg, Class<T> clazz) {
-        if (arg!=null) {
+        if (arg!=null && !arg.equals("")) {
             try {
                 clazz.getConstructor(String.class).newInstance(arg);
                 return true;

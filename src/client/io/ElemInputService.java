@@ -1,6 +1,7 @@
 package client.io;
 
 import client.managment.ProgramState;
+import client.managment.UsrInputReceiver;
 import common.data.Color;
 import common.data.Difficulty;
 import common.data.LabWork;
@@ -10,6 +11,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ElemInputService {
+    //private Validator validator = new Validator();
     /**
      * Скрипт для ввода и валидации значений полей новых элементов основной коллекции
      * @param ID - id, используется в команде update
@@ -80,7 +82,7 @@ public class ElemInputService {
                     if (Validator.checkCoordinatesY(coordinatesY)) {
                         break;
                     } else {
-                        System.out.println(OutputEngine.incorrectCoordinatesY());
+                        System.out.println(OutputEngine.incorrectCoordinatesX());
                     }
                 } else {
                     System.out.println(OutputEngine.incorrectCoordinatesY());

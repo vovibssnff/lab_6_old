@@ -10,16 +10,16 @@ import java.util.regex.Pattern;
  * Класс для валидации значений полей
  */
 public class Validator {
-    public static boolean checkId(long id) {
-        if (CollectionsEngine.containsId(id)) {
-            System.out.println(OutputEngine.incorrectId());
-            return false;
-        } else {
-            System.out.println(OutputEngine.correctId());
-            CollectionsEngine.addId(id);
-            return true;
-        }
-    }
+//    public static boolean checkId(long id) {
+//        if (CollectionsEngine.containsId(id)) {
+//            System.out.println(OutputEngine.incorrectId());
+//            return false;
+//        } else {
+//            System.out.println(OutputEngine.correctId());
+//            CollectionsEngine.addId(id);
+//            return true;
+//        }
+//    }
     public static boolean checkName(String name) {
         if ("".equals(name)||name==null) {
             System.out.println(OutputEngine.incorrectName());
@@ -86,16 +86,16 @@ public class Validator {
             return true;
         }
     }
-    public static boolean checkPassportId(String passportID) {
-        if (CollectionsEngine.containsPassportId(passportID)) {
-            System.out.println(OutputEngine.incorrectPassportId());
-            return false;
-        } else {
-            System.out.println(OutputEngine.correctPassportId());
-            CollectionsEngine.addPassportId(passportID);
-            return true;
-        }
-    }
+//    public static boolean checkPassportId(String passportID) {
+//        if (CollectionsEngine.containsPassportId(passportID)) {
+//            System.out.println(OutputEngine.incorrectPassportId());
+//            return false;
+//        } else {
+//            System.out.println(OutputEngine.correctPassportId());
+//            CollectionsEngine.addPassportId(passportID);
+//            return true;
+//        }
+//    }
     public static boolean checkColor(Color eyeColor) {
         if (Color.GREEN.equals(eyeColor)||Color.BROWN.equals(eyeColor)||Color.BLACK.equals(eyeColor)) {
             System.out.println(OutputEngine.correctEyeColor());
