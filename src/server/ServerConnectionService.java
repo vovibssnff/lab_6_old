@@ -59,8 +59,9 @@ public class ServerConnectionService {
             try {
                 channel.receive(buffer);
                 buffer.flip();
+                //String jsonRequest = new String(buffer.array(), 0, buffer.limit());
                 int sequenceNumber = buffer.getInt(); // Assuming the first 4 bytes of the packet is the sequence number
-                String jsonRequest = new String(buffer.array(), 4, buffer.limit() - 4); // Assuming the remaining bytes are the request data
+                String jsonRequest = new String(buffer.array(), 1, buffer.limit() - 1); // Assuming the remaining bytes are the request data
 
                 System.out.println(ServerState.getGson().fromJson(jsonRequest, String.class));
                 String response = "abobus_sus_amogus";

@@ -7,7 +7,9 @@ sourceSets.main.java.srcDirs = ['src']
 
 repositories {
     mavenCentral()
-
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 jar {
@@ -34,7 +36,8 @@ tasks.register('client', Jar) {
 
 dependencies {
     implementation('com.google.code.gson:gson:2.10.1')
-    implementation('org.jetbrains:annotations:23.0.0')
+    implementation('org.jetbrains:annotations:24.0.1')
+    //implementation ('rudp-SHAPSHOT.jar')
 }
 
 
@@ -46,6 +49,7 @@ sourceSets {
     }
 }
 
+//compile name: 'rudp-SNAPSHOT'
 compileJava.options.encoding = 'UTF-8'
 
 
